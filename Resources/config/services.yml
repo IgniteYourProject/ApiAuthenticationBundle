@@ -1,0 +1,5 @@
+services:
+  iyp_api.token_authenticator:
+    class: IgniteYourProject\ApiAuthenticationBundle\Security\TokenAuthenticator
+    arguments:
+      - "@iyp_api.user_provider"

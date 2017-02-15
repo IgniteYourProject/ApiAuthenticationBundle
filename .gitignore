@@ -1,0 +1,19 @@
+# Symfony directories
+composer.lock
+vendor
+app/*.cache
+
+# Composer
+composer.phar
+
+#ignore php storm project files
+.idea
+
+#ignore netbeans project files
+nbproject
+
+#ignore mac filesystem files
+.DS_Store
+
+# ignore node modules
+node_modules/*
