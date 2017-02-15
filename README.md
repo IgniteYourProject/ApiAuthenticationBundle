@@ -13,7 +13,11 @@ Minimum configuration in security.yml
 --------------
 ### Minimum configuration  
 ##### config.yml
+
 ```YML
+imports:
+  - { resource: '@ApiAuthenticationBundle/Resources/config/services.yml' }
+
 iyp_api_authentication:
     allowed_users:
         - { name: "api-client-name-1",  token: "%api-client-name-1.api.token%" }
