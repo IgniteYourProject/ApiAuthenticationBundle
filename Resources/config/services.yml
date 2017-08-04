@@ -3,3 +3,4 @@ services:
     class: IgniteYourProject\ApiAuthenticationBundle\Security\TokenAuthenticator
     arguments:
       - "@iyp_api.user_provider"
+      - "%iyp_api_authentication_token_attribute_name%"

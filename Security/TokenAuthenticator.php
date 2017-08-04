@@ -18,11 +18,18 @@ class TokenAuthenticator extends AbstractGuardAuthenticator
     private $userProvider;
 
     /**
-     * @param UserProvider $userProvider
+     * @var string
      */
-    public function __construct(UserProvider $userProvider)
+    private $tokenAttributeName;
+
+    /**
+     * @param UserProvider $userProvider
+     * @param string $tokenAttributeName
+     */
+    public function __construct(UserProvider $userProvider, $tokenAttributeName)
     {
         $this->userProvider = $userProvider;
+        $this->tokenAttributeName = $tokenAttributeName;
     }
 
     /**
@@ -31,7 +38,8 @@ class TokenAuthenticator extends AbstractGuardAuthenticator
      */
     public function getCredentials(Request $request)
     {
-        if (!$token = $request->headers->get('X-AUTH-TOKEN')) {
+        $token = $request->headers->get($this->tokenAttributeName);
+        if (false == $token && false == ($token = $request->get($this->tokenAttributeName))) {
             return null;
         }
 

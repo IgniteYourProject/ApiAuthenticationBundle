@@ -24,6 +24,7 @@ class IYPApiAuthenticationExtension extends Extension
         if (isset($config['allowed_users'])) {
             $this->defineUserProvider($config['allowed_users'], $container);
         }
+        $this->defineTokenAttributeName($config['token_attribute_name'], $container);
     }
 
     protected function defineUserProvider(array $arrUsers, ContainerBuilder $container)
@@ -31,5 +32,10 @@ class IYPApiAuthenticationExtension extends Extension
         $definition = new Definition('IgniteYourProject\ApiAuthenticationBundle\Security\UserProvider', [$arrUsers]);
         $definition->setPublic(false);
         $container->setDefinition('iyp_api.user_provider', $definition);
+    }
+
+    protected function defineTokenAttributeName($tokenAttributeName, ContainerBuilder $container)
+    {
+        $container->setParameter('iyp_api_authentication_token_attribute_name', $tokenAttributeName);
     }
 }

@@ -29,6 +29,7 @@ class Configuration implements ConfigurationInterface
     {
         $node
             ->children()
+                ->scalarNode('token_attribute_name')->defaultValue('X-AUTH-TOKEN')->end()
                 ->arrayNode('allowed_users')
                         ->prototype('array')
                         ->children()
